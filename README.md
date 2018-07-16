@@ -24,9 +24,13 @@ Prerequisites:
 
 
 Download database from "Database" folder
+
 Attached this database using Microsoft SQL server Management Studio
+
 Change DemoDBEntities connectionstring
+
 i.e.
+
 data source=LOCALTESTSERVER\SQLEXPRESS;initial catalog=DemoDB;user id=sa;password=swift123;MultipleActiveResultSets=True;App=EntityFramework
 
 data source=<Server-Name>;initial catalog=DemoDB;user id=<user-id>;password=<password>;MultipleActiveResultSets=True;App=EntityFramework
