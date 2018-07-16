@@ -1,0 +1,111 @@
+﻿@model IEnumerable<ContactDemo.Contact>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Contact List";
+}
+
+<div id="divContactList">
+    <h2>Contact List</h2>
+
+    <p>
+        <a id="lnkCreate">Create New</a>
+    </p>
+    <table class="table" id="tblContact">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+                <td>
+                    <a class="lnkEdit" id="@item.ID">Edit</a> |
+                    <a class="lnkDetails" id="@item.ID">Details</a> |
+                    <a class="lnkDelete" id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+</div>
+<div class="form-horizontal hide" id="divContactCE">
+    <h2>Create Contact</h2>
+    <hr>
+    <input type="hidden" id="hdnID" value="0" />
+    <div id="divValSummary"></div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="FirstName">First Name</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="FirstName" name="FirstName" value="" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="LastName">Last Name</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="LastName" name="LastName" value="" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Email">Email</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="Email" name="Email" value="" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="PhoneNumber">Phone Number</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="PhoneNumber" name="PhoneNumber" value="" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="IsActive">Is Active</label>
+        <div class="col-md-10">
+            <div class="checkbox">
+                <input class="check-box" data-val="true" id="IsActive" name="IsActive" value="true" type="checkbox">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input value="Save" id="btnSave" class="btn btn-default" type="button">
+        </div>
+    </div>
+
+    <div>
+        <a class="lnkList">Back to List</a>
+    </div>
+</div>
+
+<div id="divDetails" class="hide"></div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/ContactJS.js")    
+}
+@*<script src="~/Scripts/ContactJS.js" type="text/javascript"></script>*@
